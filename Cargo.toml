@@ -1,0 +1,34 @@
+[package]
+name = "xc3fr-unlock-kit-balance"
+version = "0.1.0"
+authors = ["RoccoDev <hey@rocco.dev>"]
+edition = "2021"
+license = "gpl-3.0"
+
+[package.metadata.skyline]
+titleid = "010074F013262000" # Xenoblade Chronicles 3
+package-resources = [
+    { local = "cfg/unlocks.toml", package = "/atmosphere/contents/010074F013262000/romfs/unlocks.toml" }
+]
+custom-npdm = "res/npdm/xc3.npdm"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+skyline = { git = "https://github.com/ultimate-research/skyline-rs.git" }
+serde = { version = "1.0", features = ["derive"] }
+toml = { version = "0.8" }
+
+[features]
+# Enable to crash on item interactions without a character associated to them.
+# Useful to find uncovered functions, but it will also crash every time a legacy (non-character
+# specific) item is picked up.
+debug-invalid-chr = []
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true

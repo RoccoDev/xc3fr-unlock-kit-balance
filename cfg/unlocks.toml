@@ -1,0 +1,83 @@
+[config]
+# Enable character-exclusive unlock items (see the [item.*] sections)
+per-character-items = true
+
+# Initially unlocked gem slots for each character (0-3)
+[default.gem]
+matthew = 1
+a = 1
+nikol = 1
+glimmer = 1
+shulk = 1
+rex = 1
+nael = 3
+
+# Initially unlocked art slots for each character (0-3)
+[default.art]
+matthew = 1
+a = 1
+nikol = 1
+glimmer = 1
+shulk = 1
+rex = 1
+nael = 3
+
+# Initially unlocked accessory slots for each character (0-3)
+[default.accessory]
+matthew = 1
+a = 1
+nikol = 1
+glimmer = 1
+shulk = 1
+rex = 1
+nael = 3
+
+# Initially unlocked affinity growth tiers for each character (0-3)
+[default.affinity]
+matthew = 1
+a = 1
+nikol = 1
+glimmer = 1
+shulk = 1
+rex = 1
+nael = 3
+
+# Item IDs to use for each character's gem unlock kit
+[item.gem]
+matthew = 16048
+a = 16079
+nikol = 16080
+glimmer = 16081
+shulk = 16082
+rex = 16102
+nael = 16186
+
+# Item IDs to use for each character's art unlock kit
+[item.art]
+matthew = 16103
+a = 16104
+nikol = 16105
+glimmer = 16106
+shulk = 16107
+rex = 16108
+nael = 16001
+
+# Item IDs to use for each character's accessory unlock kit
+[item.accessory]
+matthew = 16109
+a = 16110
+nikol = 16111
+glimmer = 16112
+shulk = 16113
+rex = 16114
+nael = 16002
+
+# Item IDs to use for each character's art unlock kit
+[item.affinity]
+matthew = 16115
+a = 16116
+nikol = 16117
+glimmer = 16118
+shulk = 16140
+rex = 16183
+nael = 16003

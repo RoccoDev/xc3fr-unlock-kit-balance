@@ -1,0 +1,111 @@
+[item.gem.matthew]
+name = "Gem Unlock Kit (Matthew)"
+caption = "Used to unlock one of Matthew's gem slots."
+
+[item.gem.a]
+name = "Gem Unlock Kit (A)"
+caption = "Used to unlock one of A's gem slots."
+
+[item.gem.nikol]
+name = "Gem Unlock Kit (Nikol)"
+caption = "Used to unlock one of Nikol's gem slots."
+
+[item.gem.glimmer]
+name = "Gem Unlock Kit (Glimmer)"
+caption = "Used to unlock one of Glimmer's gem slots."
+
+[item.gem.shulk]
+name = "Gem Unlock Kit (Shulk)"
+caption = "Used to unlock one of Shulk's gem slots."
+
+[item.gem.rex]
+name = "Gem Unlock Kit (Rex)"
+caption = "Used to unlock one of Rex's gem slots."
+
+[item.gem.nael]
+name = "Gem Unlock Kit (Na'el)"
+caption = "Used to unlock one of Na'el's gem slots."
+
+[item.art.matthew]
+name = "Art Unlock Kit (Matthew)"
+caption = "Used to unlock one of Matthew's art slots."
+
+[item.art.a]
+name = "Art Unlock Kit (A)"
+caption = "Used to unlock one of A's art slots."
+
+[item.art.nikol]
+name = "Art Unlock Kit (Nikol)"
+caption = "Used to unlock one of Nikol's art slots."
+
+[item.art.glimmer]
+name = "Art Unlock Kit (Glimmer)"
+caption = "Used to unlock one of Glimmer's art slots."
+
+[item.art.shulk]
+name = "Art Unlock Kit (Shulk)"
+caption = "Used to unlock one of Shulk's art slots."
+
+[item.art.rex]
+name = "Art Unlock Kit (Rex)"
+caption = "Used to unlock one of Rex's art slots."
+
+[item.art.nael]
+name = "Art Unlock Kit (Na'el)"
+caption = "Used to unlock one of Na'el's art slots."
+
+[item.accessory.matthew]
+name = "Accessory Unlock Kit (Matthew)"
+caption = "Used to unlock one of Matthew's accessory slots."
+
+[item.accessory.a]
+name = "Accessory Unlock Kit (A)"
+caption = "Used to unlock one of A's accessory slots."
+
+[item.accessory.nikol]
+name = "Accessory Unlock Kit (Nikol)"
+caption = "Used to unlock one of Nikol's accessory slots."
+
+[item.accessory.glimmer]
+name = "Accessory Unlock Kit (Glimmer)"
+caption = "Used to unlock one of Glimmer's accessory slots."
+
+[item.accessory.shulk]
+name = "Accessory Unlock Kit (Shulk)"
+caption = "Used to unlock one of Shulk's accessory slots."
+
+[item.accessory.rex]
+name = "Accessory Unlock Kit (Rex)"
+caption = "Used to unlock one of Rex's accessory slots."
+
+[item.accessory.nael]
+name = "Accessory Unlock Kit (Na'el)"
+caption = "Used to unlock one of Na'el's accessory slots."
+
+[item.affinity.matthew]
+name = "Affinity Growth Unlock Kit (Matthew)"
+caption = "Used to raise Matthew's limit on Affinity-related character growth."
+
+[item.affinity.a]
+name = "Affinity Growth Unlock Kit (A)"
+caption = "Used to raise A's limit on Affinity-related character growth."
+
+[item.affinity.nikol]
+name = "Affinity Growth Unlock Kit (Nikol)"
+caption = "Used to raise Nikol's limit on Affinity-related character growth."
+
+[item.affinity.glimmer]
+name = "Affinity Growth Unlock Kit (Glimmer)"
+caption = "Used to raise Glimmer's limit on Affinity-related character growth."
+
+[item.affinity.shulk]
+name = "Affinity Growth Unlock Kit (Shulk)"
+caption = "Used to raise Shulk's limit on Affinity-related character growth."
+
+[item.affinity.rex]
+name = "Affinity Growth Unlock Kit (Rex)"
+caption = "Used to raise Rex's limit on Affinity-related character growth."
+
+[item.affinity.nael]
+name = "Affinity Growth Unlock Kit (Na'el)"
+caption = "Used to raise Na'el's limit on Affinity-related character growth."
