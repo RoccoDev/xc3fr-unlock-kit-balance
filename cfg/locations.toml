@@ -1,0 +1,106 @@
+# Each section edits a BDAT table (you can add your own sections and lines).
+# In each line, the key is "Column ID#Row ID". The value is either a number, in which
+# case it is copied verbatim, or it is formatted as "character/type", 
+# with character being one of "matthew", "a", "nikol", "glimmer", "shulk", "rex", "nael", 
+# and type one of "art", "gem", "accessory", "affinity". The
+# corresponding item ID is read from unlocks.toml and used as the value.
+# Of course, you can also manually edit BDATs using the item IDs defined in unlocks.toml.
+
+# Below is an example distribution of the 48 items the vanilla expansion makes available.
+# Early-game areas only feature unlock items for Matthew, A, Nikol, and Glimmer. 
+# The second item of each type can only be found in Black Mountains or as a reward for late-game
+# quests, with some exceptions (notably healers). Items for Na'el aren't available in 
+# this distribution.
+
+# To disable a drop, change the value to 0.
+[ma40a_GMK_Precious]
+# Gotrock Oracle Ruins, parkour
+"ItemID#10" = "shulk/affinity"
+# Near Ruined Anti-Air Battery 3
+"ItemID#11" = "rex/art"
+# Near Raguel Lake
+"ItemID#12" = "glimmer/art"
+# Near Raguel Lake
+"ItemID#13" = "glimmer/accessory"
+# Under Royal Green
+"ItemID#14" = "nikol/gem"
+# Near Gelgemos Garrison
+"ItemID#15" = "rex/gem"
+# Rock near Raguel Lake
+"ItemID#16" = "glimmer/affinity"
+# Near Lumos Garrison
+"ItemID#17" = "glimmer/gem"
+# Near Belgazas' Drifts
+"ItemID#18" = "matthew/gem"
+# Near Befalgar Ruins
+"ItemID#19" = "rex/gem"
+# Pioneer's Point, base of the tree
+"ItemID#20" = "a/accessory"
+# Out in the open in Aurora Shelf, surrounded by Aspars and Aspar eggs
+"ItemID#21" = "a/art"
+
+# To disable a drop, change the line to "RewardNumX#YYY" = 0, for example
+# "RewardNum3#434" = 0
+[ITM_RewardAssort]
+# Vermilion Woods container
+"Reward3#434" = "matthew/art"
+# Aurora Shelf containers
+"Reward2#443" = "matthew/accessory"
+"Reward2#449" = "a/gem"
+# Ragmos Desolation containers
+"Reward2#456" = "matthew/gem"
+"Reward2#464" = "nikol/accessory"
+# Black Mountains container
+"Reward2#469" = "shulk/gem"
+# Vermilion Woods relics
+"Reward3#476" = "matthew/affinity"
+"Reward3#477" = "a/affinity"
+"Reward3#478" = "a/accessory"
+# Aurora Shelf relics
+"Reward3#479" = "a/art"
+"Reward3#480" = "nikol/affinity"
+"Reward3#481" = "a/gem"
+"Reward3#482" = "nikol/accessory"
+"Reward3#483" = "nikol/art"
+# Yesterdale relics
+"Reward3#484" = "rex/affinity"
+"Reward3#485" = "nikol/gem"
+"Reward3#486" = "glimmer/gem"
+# Ragmos Desolation relics
+"Reward3#487" = "shulk/art"
+"Reward3#488" = "a/affinity"
+"Reward3#489" = "glimmer/art"
+"Reward3#490" = "glimmer/accessory"
+"Reward3#491" = "glimmer/affinity"
+# Black Mountains relics
+"Reward3#492" = "matthew/affinity"
+"Reward3#493" = "nikol/affinity"
+"Reward3#494" = "shulk/affinity"
+"Reward3#495" = "rex/affinity"
+"Reward3#496" = "matthew/accessory"
+"Reward3#497" = "nikol/accessory"
+"Reward3#498" = "shulk/accessory"
+"Reward3#499" = "rex/accessory"
+
+# To disable a drop, change the line to "RewardNumX#YYY" = 0, for example
+# "RewardNum1#211" = 0
+[ITM_RewardQuest]
+# "If Walls Could Speak", recommended level 49
+"Reward1#211" = "rex/art"
+# "The Running Automaton", rec. level 22
+"Reward1#217" = "shulk/accessory"
+# "Hunt for the Kids", rec. level 27
+"Reward1#219" = "shulk/gem"
+# "Linka's Birthday", rec. level 38
+"Reward1#223" = "shulk/art"
+# "The Junior Workforce", rec. level 39
+"Reward1#225" = "nikol/art"
+# "Step by Step", rec. level 42
+"Reward1#226" = "matthew/art"
+# Uncomment to enable an unlock kit for Nikol after the Shulk/Rex fight (disable another one first)
+# "Reward4#205" = "nikol/gem"
+# "RewardNum4#205" = 1
+# Uncomment to enable an unlock kit for Glimmer after the Shulk/Rex fight (disable another one first)
+# "Reward4#205" = "glimmer/gem"
+# "RewardNum4#205" = 1
+# (Unfortunately there are only 4 reward slots and the first 3 are used for unity books)
