@@ -13,7 +13,7 @@
 # this distribution.
 
 # To disable a drop, change the value to 0.
-[ma40a_GMK_Precious]
+["dlc/ma40a_GMK_Precious"]
 # Gotrock Oracle Ruins, parkour
 "ItemID#10" = "shulk/affinity"
 # Near Ruined Anti-Air Battery 3
@@ -41,7 +41,7 @@
 
 # To disable a drop, change the line to "RewardNumX#YYY" = 0, for example
 # "RewardNum3#434" = 0
-[ITM_RewardAssort]
+["sys/ITM_RewardAssort"]
 # Vermilion Woods container
 "Reward3#434" = "matthew/art"
 # Aurora Shelf containers
@@ -84,7 +84,7 @@
 
 # To disable a drop, change the line to "RewardNumX#YYY" = 0, for example
 # "RewardNum1#211" = 0
-[ITM_RewardQuest]
+["sys/ITM_RewardQuest"]
 # "If Walls Could Speak", recommended level 49
 "Reward1#211" = "rex/art"
 # "The Running Automaton", rec. level 22

@@ -1,6 +1,7 @@
 import json
 import sys
 import tomllib
+import os
 import struct
 
 LANG_RES = {
@@ -113,6 +114,23 @@ def patch_items(toml):
     
     save_table(table, 'ITM_Precious', 'sys')
 
+def patch_locations(base, toml):
+    for name, section in toml.items():
+        file, name = name.split('/')
+        table = get_table(name, file)
+        for key, val in section.items():
+            fmt_val = 0
+            if val:
+                if isinstance(val, int):
+                    fmt_val = val
+                else:
+                    chr, ty = val.split('/')
+                    fmt_val = base['item'][ty][chr]
+            col, id = key.split('#')
+            row = row_by_id(table, int(id))
+            row[col] = fmt_val
+        save_table(table, name, file)
+
 def main():
     langs = ['gb']
     with open('cfg/unlocks.toml') as f:
@@ -122,6 +140,10 @@ def main():
             lang_toml = tomllib.loads(f.read())
         patch_lang(lang_toml, lang)
     patch_items(toml)
+    if os.path.isfile('cfg/locations.toml'):
+        with open('cfg/locations.toml') as f:
+            loc_toml = tomllib.loads(f.read())
+        patch_locations(toml, loc_toml)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2 or not sys.argv[1]:
