@@ -179,7 +179,7 @@ dependencies = [
 
 [[package]]
 name = "xc3fr-unlock-kit-balance"
-version = "0.2.0"
+version = "0.2.0-rc.1"
 dependencies = [
  "serde",
  "skyline",
