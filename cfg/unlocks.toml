@@ -42,6 +42,12 @@ shulk = 1
 rex = 1
 nael = 3
 
+# Values to change in each item BDAT row
+[item_config]
+IconPop = 1 # shared with old unlock kits
+Rarity = 2 # legendary
+Sell = 0 # no selling
+
 # Item IDs to use for each character's gem unlock kit
 [item.gem]
 matthew = 16048

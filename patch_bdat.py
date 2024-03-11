@@ -3,6 +3,9 @@ import sys
 import tomllib
 import os
 import struct
+import glob
+import argparse
+import random
 
 LANG_RES = {
     'gem': {},
@@ -11,6 +14,10 @@ LANG_RES = {
     'affinity': {}
 }
 BDAT_PATH = ""
+
+def abort(msg, code=1):
+    print(msg)
+    sys.exit(code)
 
 def murmur32(s):
     """Return the 32-bit Murmur3 hash of s using seed 0."""
@@ -57,12 +64,16 @@ def murmur32(s):
 def get_table(name, file, lang=None):
     assert BDAT_PATH
     path = f"{BDAT_PATH}/{lang}/game/{file}/{name}.json" if lang else f"{BDAT_PATH}/{file}/{name}.json"
+    if not os.path.exists(path):
+        abort(f"Table file {path} not found")
     with open(path) as f:
         return json.loads(f.read())
 
 def save_table(table, name, file, lang=None):
     assert BDAT_PATH
     path = f"{BDAT_PATH}/{lang}/game/{file}/{name}.json" if lang else f"{BDAT_PATH}/{file}/{name}.json"
+    if not os.path.exists(path):
+        abort(f"Table file {path} not found, will not create new tables")
     with open(path, 'w') as f:
         return f.write(json.dumps(table, indent=2))
 
@@ -82,7 +93,9 @@ def find_or_create_row(bdat, label, key='label', dup_row=-1):
 
 def row_by_id(bdat, id):
     rows = bdat['rows']
-    return next(row for row in rows if row['$id'] == id)
+    row = next((row for row in rows if row['$id'] == id), None)
+    if row: return row
+    abort(f"row {id} not found")
 
 def patch_lang(toml, lang):
     table = get_table('msg_item_precious', 'system', lang=lang)
@@ -103,6 +116,7 @@ def patch_lang(toml, lang):
 
 def patch_items(toml):
     items = toml['item']
+    cfg = toml['item_config']
     table = get_table('ITM_Precious', 'sys')
 
     for itm_type, chrs in items.items():
@@ -110,8 +124,8 @@ def patch_items(toml):
             row = row_by_id(table, id)
             row['Name'] = LANG_RES[itm_type][chr]['name']
             row['Caption'] = LANG_RES[itm_type][chr]['caption']
-            row['IconPop'] = 1
-    
+            for k, v in cfg.items():
+                row[k] = v
     save_table(table, 'ITM_Precious', 'sys')
 
 def patch_locations(base, toml):
@@ -131,24 +145,49 @@ def patch_locations(base, toml):
             row[col] = fmt_val
         save_table(table, name, file)
 
+def randomize_locations(toml, seed):
+    print(f"Randomizing locations based on {f'seed {seed}' if seed else 'default seed'}")
+    random.seed(seed)
+    values = [v for _, s in toml.items() for _, v in s.items()]
+    random.shuffle(values)
+    for _, sec in toml.items():
+        for k in sec.keys():
+            sec[k] = values.pop()
+    print('Random locations:')
+    print(toml)
+    pass
+
 def main():
-    langs = ['gb']
+    parser = argparse.ArgumentParser(
+        prog = 'patch_bdat.py'
+    )
+    parser.add_argument('bdat_json_path')
+    parser.add_argument('--no-locations', action='store_const', const=True, help='Do not edit item locations')
+    parser.add_argument('--random-locations', metavar='SEED', nargs='?', default='', help='Randomize unlock kit locations')
+
+    args = parser.parse_args()
+    global BDAT_PATH
+    BDAT_PATH = args.bdat_json_path
+
+    langs = glob.glob('lang_*.toml', root_dir='cfg')
+    langs = [l.removeprefix('lang_').removesuffix('.toml') for l in langs]
     with open('cfg/unlocks.toml') as f:
         toml = tomllib.loads(f.read())
     for lang in langs:
+        print(f"Patching language {lang}")
         with open(f"cfg/lang_{lang}.toml") as f:
             lang_toml = tomllib.loads(f.read())
         patch_lang(lang_toml, lang)
     patch_items(toml)
-    if os.path.isfile('cfg/locations.toml'):
-        with open('cfg/locations.toml') as f:
-            loc_toml = tomllib.loads(f.read())
-        patch_locations(toml, loc_toml)
+    if not args.no_locations:
+        if os.path.isfile('cfg/locations.toml'):
+            with open('cfg/locations.toml') as f:
+                loc_toml = tomllib.loads(f.read())
+            if args.random_locations != '':
+                # None means the user used --random-locations without a seed
+                # while '' means the argument is absent
+                randomize_locations(loc_toml, args.random_locations)
+            patch_locations(toml, loc_toml)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2 or not sys.argv[1]:
-        print('Usage: python patch_bdat.py /path/to/bdat')
-        print('NOTE: Modified BDATs will be overwritten.')
-    else:
-        BDAT_PATH = sys.argv[1]
-        main()
+    main()
