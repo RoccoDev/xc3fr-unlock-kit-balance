@@ -5,13 +5,6 @@ authors = ["RoccoDev <hey@rocco.dev>"]
 edition = "2021"
 license = "gpl-3.0"
 
-[package.metadata.skyline]
-titleid = "010074F013262000" # Xenoblade Chronicles 3
-package-resources = [
-    { local = "cfg/unlocks.toml", package = "/atmosphere/contents/010074F013262000/romfs/unlocks.toml" }
-]
-custom-npdm = "res/npdm/xc3.npdm"
-
 [lib]
 crate-type = ["cdylib"]
 
