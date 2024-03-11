@@ -32,32 +32,32 @@ pub fn install_hooks() {
     );
 
     unsafe {
-        patching::patch_data(0x008d1d90, &0xD2824690_u32).unwrap(); // mov x16, #0x1234
-        patching::patch_data(0x008d1d94, &0x1400000D_u32).unwrap(); // b 56
+        patching::patch_data(0x008d2980, &0xD2824690_u32).unwrap(); // mov x16, #0x1234
+        patching::patch_data(0x008d2984, &0x1400000D_u32).unwrap(); // b 56
     }
 }
 
-#[hook(offset = 0x002ebbb0, inline)]
+#[hook(offset = 0x002ebbe0, inline)]
 unsafe fn get_item_slot(ctx: &mut InlineCtx) {
     patch_register(ctx, 1)
 }
 
-#[hook(offset = 0x0059dae8, inline)]
+#[hook(offset = 0x0059db18, inline)]
 unsafe fn get_item_slot2(ctx: &mut InlineCtx) {
     patch_register(ctx, 1)
 }
 
-#[hook(offset = 0x002eb638, inline)]
+#[hook(offset = 0x002eb668, inline)]
 unsafe fn get_item_count(ctx: &mut InlineCtx) {
     patch_register(ctx, 1)
 }
 
-#[hook(offset = 0x00527114, inline)]
+#[hook(offset = 0x00527144, inline)]
 unsafe fn item_confirm_dialog(ctx: &mut InlineCtx) {
     patch_register(ctx, 8)
 }
 
-#[hook(offset = 0x009f0f40, inline)]
+#[hook(offset = 0x009f1b70, inline)]
 unsafe fn pickup_cmp(ctx: &mut InlineCtx) {
     let item_id = *ctx.registers[21].w.as_ref();
     if get_config().get_item_type(item_id + 1).is_some() {
@@ -65,7 +65,7 @@ unsafe fn pickup_cmp(ctx: &mut InlineCtx) {
     }
 }
 
-#[hook(offset = 0x009f0f60, inline)]
+#[hook(offset = 0x009f1b90, inline)]
 unsafe fn pickup_type(ctx: &mut InlineCtx) {
     let item_id = *ctx.registers[21].w.as_ref() + 1;
     let announce_id = ctx.registers[8].w.as_mut();
@@ -78,7 +78,7 @@ unsafe fn pickup_type(ctx: &mut InlineCtx) {
     }
 }
 
-#[hook(offset = 0x008d1dc8)]
+#[hook(offset = 0x008d29b8)]
 unsafe fn patch_intermediary(p1: u64, p2: u64) -> u64 {
     // IPC register is used to pass a sentinel around
     let mut magic: u64;
@@ -109,7 +109,7 @@ unsafe fn patch_intermediary(p1: u64, p2: u64) -> u64 {
     p1
 }
 
-#[hook(offset = 0x007867c8, inline)]
+#[hook(offset = 0x00787398, inline)]
 unsafe fn mnu_patch_art_interm(ctx: &mut InlineCtx) {
     CUR_CHARACTER_PTR = *ctx.registers[21].x.as_ref();
     ARTS_MODE = ArtsMode::Callback;
